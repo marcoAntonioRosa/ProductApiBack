@@ -1,6 +1,10 @@
-global using ProductApiBack.Data;
 global using Microsoft.EntityFrameworkCore;
+global using ProductApiBack.Data;
+using NLog;
+using ProductApiBack.Extensions;
 using ProductApiBack.Services;
+
+LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +17,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 });
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddSingleton<ILoggerManager, LoggerManager>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -26,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCustomMiddleware();
 
 app.UseHttpsRedirection();
 

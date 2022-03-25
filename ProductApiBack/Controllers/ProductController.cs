@@ -9,10 +9,12 @@ namespace ProductApiBack.Controllers
     public class ProductController : ControllerBase
     {
         private IProductService _service;
+        private ILoggerManager _logger;
 
-        public ProductController(IProductService productService)
+        public ProductController(IProductService productService, ILoggerManager logger)
         {
             _service = productService;
+            _logger = logger;
         }
 
         [HttpGet]
