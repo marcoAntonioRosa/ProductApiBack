@@ -12,6 +12,6 @@ namespace ProductApiBack.Services
 
         public Task<Product> EditProduct(Product product);
 
-        public Task<bool> DeleteProduct(int id);
+        public Task<Product> DeleteProduct(int id);
     }
 }

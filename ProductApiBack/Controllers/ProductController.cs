@@ -20,31 +20,31 @@ namespace ProductApiBack.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> GetAllProducts()
         {
-            return Ok(await _service.GetAllProducts());
+            return await _service.GetAllProducts();
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetSingleProduct(int id)
         {
-            return Ok(await _service.GetSingleProduct(id));
+            return await _service.GetSingleProduct(id);
         }
 
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(Product product)
         {
-            return Ok(await _service.CreateProduct(product));
+            return await _service.CreateProduct(product);
         }
 
         [HttpPut]
         public async Task<ActionResult<Product>> EditProduct(Product product)
         {
-            return Ok(await _service.EditProduct(product));
+            return await _service.EditProduct(product);
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult<Product>> DeleteProduct(int id)
         {
-            return Ok(await _service.DeleteProduct(id));
+            return await _service.DeleteProduct(id);
         }
     }
 }

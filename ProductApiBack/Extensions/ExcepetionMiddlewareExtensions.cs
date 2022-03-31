@@ -19,6 +19,8 @@ namespace ProductApiBack.Extensions
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             context.Response.ContentType = "application/json";
 
+            await _next(context);
+
             var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
             if (contextFeature != null)
             {
@@ -30,8 +32,6 @@ namespace ProductApiBack.Extensions
                     Message = "Internal Server Error"
                 }.ToString());
             }
-
-            await _next(context);
         }
     }
 
