@@ -365,3 +365,5 @@ FodyWeavers.xsd
 Migrations/
 
 appsettings.json
+.vscode/launch.json
+.vscode/tasks.json
